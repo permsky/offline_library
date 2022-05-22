@@ -11,10 +11,10 @@
     <title>Book cards</title>
   </head>
   <body>
-    {% for chunk in chunks %}
+    {% for pair in pairs %}
       <div class="container">
         <div class="row">
-          {% for book in chunk %}
+          {% for book in pair %}
             <div class="col-6">
               <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
@@ -25,7 +25,7 @@
                     <div class="card-body">
                       <h5 class="card-title">{{ book.title }}</h5>
                       <p class="card-text">{{ book.author }}</p>
-                      <p class="card-text"><a href="{{ book.book_path|urlencode }}" target="_blank"><small class="text-muted">Читать</small></a></p>
+                      <p class="card-text"><a href="../{{ book.book_path|urlencode }}" target="_blank"><small class="text-muted">Читать</small></a></p>
                     </div>
                   </div>
                 </div>

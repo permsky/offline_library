@@ -21,11 +21,15 @@ def rebuild() -> None:
         autoescape=select_autoescape(['html', 'xml'])
     )
     template = env.get_template('template.html')
-    rendered_page = template.render(
-        chunks=chunked(get_downloaded_books(), 2),
-    )
-    with open('index.html', 'w', encoding="utf8") as file:
-        file.write(rendered_page)
+    folder = 'pages'
+    os.makedirs(folder, exist_ok=True)
+    for page_number, chunk in enumerate(chunked(get_downloaded_books(), 10)):
+        rendered_page = template.render(
+            pairs=chunked(chunk, 2),
+        )
+        filepath = os.path.join(folder, f'index{page_number}.html')
+        with open(filepath, 'w', encoding="utf8") as file:
+            file.write(rendered_page)
 
 
 def on_reload() -> None:
