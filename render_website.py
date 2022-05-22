@@ -3,6 +3,7 @@ import os
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from livereload import Server
+from more_itertools import chunked
 
 
 def get_downloaded_books(filepath: str='books.json') -> list:
@@ -21,7 +22,7 @@ def rebuild() -> None:
     )
     template = env.get_template('template.html')
     rendered_page = template.render(
-        books=get_downloaded_books(),
+        chunks=chunked(get_downloaded_books(), 2),
     )
     with open('index.html', 'w', encoding="utf8") as file:
         file.write(rendered_page)
