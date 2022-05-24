@@ -17,9 +17,9 @@
         <nav aria-label="Page navigation example">
           <ul class="pagination">
             {% if current_page == 1 %}
-              <li class="page-item disabled"><a class="page-link" href="#">Назад</a></li>
+              <li class="page-item disabled"><a class="page-link" href="">Назад</a></li>
             {% else %}
-              <li class="page-item"><a class="page-link" href="#">Назад</a></li>
+              <li class="page-item"><a class="page-link" href="../pages/index{{ current_page - 1 }}.html">Назад</a></li>
             {% endif %}
             {% for page_number in range(1, page_count + 1)  %}
               {% if page_number == current_page %}
@@ -29,9 +29,9 @@
               {% endif %}
             {% endfor %}
             {% if current_page == page_count %}
-              <li class="page-item disabled"><a class="page-link" href="#">Вперёд</a></li>
+              <li class="page-item disabled"><a class="page-link" href="">Вперёд</a></li>
             {% else %}
-              <li class="page-item"><a class="page-link" href="#">Вперёд</a></li>
+              <li class="page-item"><a class="page-link" href="../pages/index{{ current_page + 1 }}.html">Вперёд</a></li>
             {% endif %}
           </ul>
         </nav>
