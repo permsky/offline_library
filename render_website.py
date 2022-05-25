@@ -8,7 +8,9 @@ from more_itertools import chunked
 
 
 def get_downloaded_books(filepath: str='books.json') -> list:
-    '''Load information about already downloaded books from json-file.'''
+    '''
+        Load information about already downloaded books from json file.
+    '''
     if os.path.isfile(filepath):
         with open(filepath, 'r', encoding='utf-8') as books_file:
             return json.load(books_file)
@@ -16,7 +18,7 @@ def get_downloaded_books(filepath: str='books.json') -> list:
 
 
 def rebuild() -> None:
-    '''Render index.html.'''
+    '''Render html file for every page.'''
     env = Environment(
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml'])
