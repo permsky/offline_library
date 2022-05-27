@@ -27,8 +27,9 @@ def rebuild() -> None:
     folder = 'pages'
     os.makedirs(folder, exist_ok=True)
     books = get_downloaded_books()
-    page_count = math.ceil(len(books) / 10)
-    for number, chunk in enumerate(chunked(books, 10)):
+    books_per_page = 10
+    page_count = math.ceil(len(books) / books_per_page)
+    for number, chunk in enumerate(chunked(books, books_per_page)):
         rendered_page = template.render(
             pairs=chunked(chunk, 2),
             current_page=number + 1,
